@@ -353,7 +353,7 @@ public class MdbSpringBootApplication implements CommandLineRunner{
 //						sql = sqlclinic + " where co.aco_id='" + orgident + "') and npidata.npi=" + " '" + clinlist.get(j).toString() + "'";
 //						String clinicident =clinlist.get(j).toString();
 //						System.out.println("location clinic SQL: " + sql + "\n");
-//						//	Connection conntop11 = DriverManager.getConnection("jdbc:postgresql://3.236.102.222:5432/cclfdb","postgres", "Dataqhealth1");
+//						//	Connection conntop11 = DriverManager.getConnection("jdbc:postgresql://0.000.000.000:5432/cclfdb","postgres", "password");
 //						//	cliniccount++;
 //						Statement stmt3 = conn.createStatement();
 //						ResultSet rsetclin = stmt3.executeQuery(sql);
@@ -453,7 +453,6 @@ public class MdbSpringBootApplication implements CommandLineRunner{
 			//sql = patsql + " where atndg_prvdr_npi_num= '" + pracnpi + "' )" + " and bene_mbi_id=" + " '" + patlist.get(i).toString() + "'";
 			sql = patsql + " where rndrg_prvdr_npi_num= '" + pracnpi + "' ) order by c8.bene_mbi_id asc";
 			System.out.println("The patient SQL is: " + sql + "");
-			//Connection conntop9 = DriverManager.getConnection("jdbc:postgresql://3.236.102.222:5432/cclfdb","postgres", "Dataqhealth1");
 			Statement stmt5 = conn.createStatement();
 			ResultSet rsetpat = stmt5.executeQuery(sql);
 			ResultSetMetaData rsmd = rsetpat.getMetaData();
@@ -564,7 +563,6 @@ public class MdbSpringBootApplication implements CommandLineRunner{
 			sql += " where c1.bene_mbi_id ='" + patident + "' ";
 			sql += " and c1.rndrg_prvdr_npi_num ='" + pracnpi + "'  order by cur_clm_uniq_id asc";
 			System.out.println("The claim SQL is: " + sql + "");
-			//Connection conntop8 = DriverManager.getConnection("jdbc:postgresql://3.236.102.222:5432/cclfdb","postgres", "Dataqhealth1");
 			Statement stmt6 = conn.createStatement();
 			ResultSet rsetclaim = stmt6.executeQuery(sql);
 			//Beneficiary Medicare Status Code BENE_MDCR_STUS_CD
@@ -711,7 +709,6 @@ public class MdbSpringBootApplication implements CommandLineRunner{
 				sql +=	"and c5.cur_clm_uniq_id='" + claimIdent + "' and c5.rndrg_prvdr_npi_num='" + pracnpi + "' order by  cur_clm_uniq_id asc" ;
 
 				System.out.println("The EOB SQL is: " + sql + "");
-				//	Connection conntop6 = DriverManager.getConnection("jdbc:postgresql://3.236.102.222:5432/cclfdb","postgres", "Dataqhealth1");
 				Statement stmt7 = conn.createStatement();
 				ResultSet rseteob = stmt7.executeQuery(sql);
 				ExplanationOfBenefit eob = new ExplanationOfBenefit();
@@ -1583,7 +1580,7 @@ public class MdbSpringBootApplication implements CommandLineRunner{
 
 							sql = "insert into batch_log values ('" + timeStamp + "','eob','" + ex.toString() + "','" + cliniccount + "','" + praccount + "','" + patcount + "','" + claimcount + "','" + eobcount + "',false)";
 							System.out.println("The EOB error SQL is: " + sql + "");
-							Connection conntop18 = DriverManager.getConnection("jdbc:postgresql://3.236.102.222:5432/cclfdb", "postgres", "Dataqhealth1");
+							Connection conntop18 = DriverManager.getConnection("jdbc:postgresql://3.000.000.000:5432/cclfdb", "postgres", "password");
 							Statement stmt8 = conntop18.createStatement();
 							stmt8.executeQuery(sql);
 						}
@@ -1709,7 +1706,7 @@ public class MdbSpringBootApplication implements CommandLineRunner{
 												String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
 												sql = "insert into batch_log values ('" + timeStamp + "','Claim','" + ex.toString() + "','" + cliniccount + "','" + praccount + "','" + patcount + "','" + claimcount + "','" + eobcount + "',false)";
 												System.out.println("The claim error SQL is: " + sql + "");
-												Connection conntop5 = DriverManager.getConnection("jdbc:postgresql://3.236.102.222:5432/cclfdb", "postgres", "Dataqhealth1");
+												Connection conntop5 = DriverManager.getConnection("jdbc:postgresql://3.000.000.000:5432/cclfdb", "postgres", "password");
 												Statement stmt9 = conntop5.createStatement();
 												stmt9.executeQuery(sql);
 											}//end of try cathc for nested clain
@@ -1722,7 +1719,7 @@ public class MdbSpringBootApplication implements CommandLineRunner{
 
 										sql = "insert into batch_log values ('" + timeStamp + "','Patient','" + ex.toString() + "','" + cliniccount + "','" + praccount + "','" + patcount + "','" + claimcount + "','" + eobcount + "',false)";
 										System.out.println("The Patient error SQL is: " + sql + "");
-										Connection conntop4 = DriverManager.getConnection("jdbc:postgresql://3.236.102.222:5432/cclfdb", "postgres", "Dataqhealth1");
+										Connection conntop4 = DriverManager.getConnection("jdbc:postgresql://3.000.000.000:5432/cclfdb", "postgres", "password");
 										Statement stmt10 = conntop4.createStatement();
 										stmt10.executeQuery(sql);
 									}
@@ -1735,7 +1732,7 @@ public class MdbSpringBootApplication implements CommandLineRunner{
 								String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
 								sql = "insert into batch_log values ('" + timeStamp + "','Practitioner','" + ex.toString() + "','" + cliniccount + "','" + praccount + "','" + patcount + "','" + claimcount + "','" + eobcount + "',false)";
 								System.out.println("The Practitioner error SQL is: " + sql + "");
-								Connection conntop3 = DriverManager.getConnection("jdbc:postgresql://3.236.102.222:5432/cclfdb", "postgres", "Dataqhealth1");
+								Connection conntop3 = DriverManager.getConnection("jdbc:postgresql://3.000.000.000:5432/cclfdb", "postgres", "password");
 								Statement stmt11 = conntop3.createStatement();
 								stmt11.executeQuery(sql);
 							}//	}//end of practitioner loop
@@ -1748,7 +1745,7 @@ public class MdbSpringBootApplication implements CommandLineRunner{
 //							String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
 //							sql = "insert into batch_log values ('"+timeStamp+"','Clinic','"+ex.toString()+"','"+cliniccount+"','"+praccount+"','"+patcount+"','"+claimcount+"','"+eobcount+"',false)";
 //							System.out.println("The clinic error SQL is: " + sql + "");
-//							Connection conntop3 = DriverManager.getConnection("jdbc:postgresql://3.236.102.222:5432/cclfdb","postgres", "Dataqhealth1");
+//							Connection conntop3 = DriverManager.getConnection("jdbc:postgresql://3.000.000.000:5432/cclfdb","postgres", "password");
 //							Statement stmt12 = conntop3.createStatement();
 //							stmt12.executeQuery(sql);
 //						}
@@ -1767,8 +1764,8 @@ public class MdbSpringBootApplication implements CommandLineRunner{
 			String sql43 = "insert into batch_log values ('"+timeStamp+"','Organization','--','"+cliniccount+"','"+praccount+"','"+patcount+"','"+claimcount+"','"+eobcount+"',true)";
 			System.out.println("The final count SQL is: " + sql43 + "");
 			Connection conntop2 = DriverManager.getConnection(
-					"jdbc:postgresql://3.236.102.222:5432/cclfdb",
-					"postgres", "Dataqhealth1");
+					"jdbc:postgresql://3.000.000.000:5432/cclfdb",
+					"postgres", "password");
 			Statement stmt13 = conntop2.createStatement();
 			stmt13.executeQuery(sql43);
 		}
@@ -1779,8 +1776,8 @@ public class MdbSpringBootApplication implements CommandLineRunner{
 			System.out.println("The top error catch  SQL is: " + sql46 + "");
 			try{Class.forName("org.postgresql.Driver");
 				Connection conntop = DriverManager.getConnection(
-						"jdbc:postgresql://3.236.102.222:5432/cclfdb",
-						"postgres", "Dataqhealth1");
+						"jdbc:postgresql://3.000.000.000:5432/cclfdb",
+						"postgres", "password");
 				Statement stmt14 = conntop.createStatement();
 				stmt14.executeQuery(sql46);
 			}
@@ -1788,109 +1785,6 @@ public class MdbSpringBootApplication implements CommandLineRunner{
 
 		}  // Step
 
-		//com.example.mdbspringboot.model.ContactPoint tobj1 = new com.example.mdbspringboot.model.ContactPoint();
-//		org.hl7.fhir.r5.model.ContactPoint cp = new org.hl7.fhir.r5.model.ContactPoint();
-//		org.hl7.fhir.r5.model.ContactPoint.ContactPointUse cpu = HOME;
-//		org.hl7.fhir.r5.model.ContactPoint.ContactPointSystem cps =  PHONE;
-//		cp.setRank(1);
-//		cp.setSystem(cps);
-//		cp.setValue("(0330)- 789-8967");
-//		cp.setUse(cpu);
-////		tobj1.setUse("mobile");
-////		tobj1.setRank("1");
-////		tobj1.setSystem("phone");
-////		tobj1.setValue("(0330)- 789-8967");
-//		Coding t = new Coding();
-//		t.setCode("M");
-//		CodeableConcept cc = new CodeableConcept();
-//		cc.addCoding(t);
-//		Date bdate = new Date();
-//		Date pdate = new Date();
-//		try {
-//			bdate = new SimpleDateFormat("dd/MM/yyyy").parse("1944-11-17");
-//		}catch(Exception ex){ }
-//
-//
-//		Patient.PatientCommunicationComponent pcc = new Patient.PatientCommunicationComponent();
-//		t.setCode("en");
-//		t.setDisplay("English");
-//	    cc.addCoding(t);
-//	    pcc.setLanguage(cc);
-//		pcc.setPreferred(true);
-//		DataType dataType = new BooleanType() ;
-//		dataType.setUserData("DeaceaseBoolean",false);
-//		Enumerations.AdministrativeGender agender = Enumerations.AdministrativeGender.FEMALE;
-//		Address fhiraddress = new Address();
-//		fhiraddress.setCity("Karachi");
-//		fhiraddress.setCountry("");
-//		fhiraddress.setUse(Address.AddressUse.HOME);
-//		fhiraddress.setPostalCode("775500");
-//		StringType st = new StringType();
-//		st.setValue("Address Line 1");
-//		fhiraddress.setLine(Arrays.asList(st));
-//		fhiraddress.setState("Sindh");
-//		fhiraddress.setType(Address.AddressType.POSTAL);
-//		HumanName hname = new HumanName();
-//		Period period = new Period();
-//
-//		try {
-//			pdate = new SimpleDateFormat("dd/MM/yyyy").parse("2018-11-17");
-//		}catch(Exception ex){ }
-//		period.setStart(pdate);
-//		try {
-//			pdate = new SimpleDateFormat("dd/MM/yyyy").parse("2023-11-17");
-//		}catch(Exception ex){ }
-//
-//		period.setEnd(pdate);
-//
-//		hname.setFamily("Khandahari");
-//		hname.setUse(HumanName.NameUse.OFFICIAL);
-//		st.setValue("Richard");
-//		hname.setGiven(Arrays.asList(st));
-//		hname.setPeriod(period);
-//		st.setValue("Mr.");
-//		hname.setSuffix(Arrays.asList(st));
-//		t.setCode("C");
-//		cc.addCoding(t);
-//
-//		Patient.ContactComponent ccpt = new Patient.ContactComponent();
-//		ccpt.setGender(agender);
-//		ccpt.setAddress(fhiraddress);
-//		ccpt.setTelecom(Arrays.asList(cp));
-//		ccpt.setName(hname);
-//		ccpt.setRelationship(Arrays.asList(cc));
-//		ccpt.setPeriod(period);
-//
-//		patient.setId("pFhir907");
-//		List<Identifier> theIdentifier = new ArrayList<Identifier>();
-//		Identifier ident = new Identifier();
-//		ident.setId("pFhir907");
-//		theIdentifier.add(ident);
-//		//patient.setIdentifier(theIdentifier );
-//		patient.setIdentifier(Arrays.asList(ident));
-//
-//	//	patient.addIdentifier().setSystem("http://optum.com/MRNs").setValue("007");
-//
-//		patient.addName().setFamily("Chakravarty").addGiven("Mithun").addGiven("A");
-//
-//		patient.addAddress().addLine("Address Line 1");
-//
-//		patient.addAddress().setCity("Mumbai");
-//
-//		patient.addAddress().setCountry("India");
-//		patient.setTelecom(Arrays.asList(cp));
-//		patient.setMaritalStatus(cc);
-//
-//		patient.setBirthDate(bdate);
-//		patient.setActive(true);
-//
-//		patient.setGender(agender);
-//		//patient.setDeceased()
-//		patient.setCommunication(Arrays.asList(pcc));
-//		patient.setDeceased(dataType);
-//		patient.setContact(Arrays.asList(ccpt));
-//
-//		patientRepository.save(patient);
 
 	}
 
@@ -1941,253 +1835,5 @@ public class MdbSpringBootApplication implements CommandLineRunner{
 	}
 
 
-//	public void run(String... args) {
-//
-//		//system": "phone",
-//		//      "value": "(03) 3410 5613",
-//		//      "use": "mobile",
-//		//      "rank": 2
-//		TelecomList tobj1 = new TelecomList();
-//		tobj1.setUse("mobile");
-//		tobj1.setRank("1");
-//		tobj1.setSystem("phone");
-//		tobj1.setValue("(0330)- 789-8967");
-//
-//		//tlist.setTel1(tobj1);
-//        //newlist.set(tobj1);
-//
-//		List nline = new ArrayList();
-//		nline.add("115 oswald drive");
-//		nline.add("brooklyn");
-//		nline.add("NewWark");
-//		nline.add("NewYork");
-//
-//		List list = new ArrayList();
-//
-//		Name mname = new Name();
-//		mname.setText("Mrs Falzanah Siddiqui");
-//		mname.setFamily("Siddiqui");
-//		mname.setUse("official");
-//		mname.setGiven(Arrays.asList("Falzanah"));
-//		mname.setPrefix(Arrays.asList("") );
-//		mname.setSuffix(Arrays.asList(""));
-//		Name cname = new Name();
-//		cname.setText("Baby Ahmed");
-//		cname.setFamily("Siddiqui");
-//		cname.setUse("official");
-//		cname.setGiven(Arrays.asList("Ahmed"));
-//		cname.setPrefix(Arrays.asList("") );
-//		cname.setSuffix(Arrays.asList(""));
-//
-//        //List<String> list = Arrays.asList("foo", "bar");
-//
-//		Address addr = new Address();
-//		addr.setCity("Newwark");
-//		addr.setDistrict("NewWark");
-//		addr.setState("NewYork");
-//		addr.setLine(nline);
-//        Link link = new Link();
-//		link.setPatientname("Mrs Siddiqui");
-//        link.setPatientcode("MB-82");
-//
-//        //link.setPatientName("Mrs Siddiqui");
-//		// link.setPatientName("Baby Ahmed");
-//
-//		Patient patient = new Patient();
-//		Practitioner practitioner = new Practitioner();
-//		Encounter encounter = new Encounter();
-//		//patient.setId("AL587");
-//		patient.setPid("p404"); // unique id with @ID must be different
-//		patient.setResourceType("Patient");
-//		patient.setActive(true);
-//		patient.setName(Arrays.asList(cname));
-//		//patient.setPatientName("Mrs Falzanah Siddiqui");
-//		//patient.setPatientName("Adam Gonzalez");
-//		//patient.setPatientName("Baby Ahmed");
-//		patient.setGender(Gender.Male);
-//		patient.setTelecom(Arrays.asList(tobj1));
-//		patient.setAddress(Arrays.asList(addr));
-//        patient.setLink(link);
-//		patient.setLinkcode(304);
-//		Name dname = new Name();
-//		dname.setText("Dokter Bronsig");
-//		dname.setFamily("Bronsig");
-//		dname.setUse("official");
-//		dname.setGiven(Arrays.asList("Arend"));
-//		dname.setPrefix(Arrays.asList("PDEng.") );
-//		dname.setSuffix(Arrays.asList("Drs."));
-//
-//		TelecomList tobj2 = new TelecomList();
-//		tobj2.setUse("mobile");
-//		tobj2.setRank("1");
-//		tobj2.setSystem("office");
-//		tobj2.setValue("(563)-897-9876");
-//		//tlist.setTel1(tobj2);
-//		practitioner.setResourceType("Practitioner");
-//		practitioner.setAddress(Arrays.asList(addr));
-//		practitioner.setPracid("f201");
-//		practitioner.setTelecom(Arrays.asList(tobj2));
-//		practitioner.setActive(true);
-//		practitioner.setName(Arrays.asList(dname));
-//		practitioner.setGender(Gender.Male);
-//
-//		Individual ind = new Individual();
-//		ind.setEntity(EntityType.Practitioner);
-//		ind.setPractitionerId("f201");
-//		Participant participant = new Participant();
-//
-//		participant.setIndividual(ind);
-//		Subject subject = new Subject();
-//		subject.setDisplay(mname.getText());
-//		subject.setPatientid("p404");
-//		subject.setReference(EntityType.Patient);
-//
-//		encounter.setResourceType("Encounter");
-//        encounter.setEid("e201");
-//		encounter.setParticipant(Arrays.asList(participant));
-//        encounter.setSubject(subject);
-//
-////		patientRepository.save(patient);
-////		System.out.println("-------------CREATE Patient-------------------------------\n");
-////		practitionerRepository.save(practitioner);
-////		System.out.println("-------------CREATE Practitioner-------------------------------\n");
-////		encounterRepository.save(encounter);
-////		System.out.println("-------------CREATE Encounter-------------------------------\n");
-////	/////////////////
-
-//	}
-
-
-
-//		// Clean up any previous data
-//		groceryItemRepo.deleteAll(); // Doesn't delete the collection
-//
-//		System.out.println("-------------CREATE GROCERY ITEMS-------------------------------\n");
-//
-//		createGroceryItems();
-//
-//		System.out.println("\n----------------SHOW ALL GROCERY ITEMS---------------------------\n");
-//
-//		showAllGroceryItems();
-//
-//		System.out.println("\n--------------GET ITEM BY NAME-----------------------------------\n");
-//
-//		getGroceryItemByName("Whole Wheat Biscuit");
-//
-//		System.out.println("\n-----------GET ITEMS BY CATEGORY---------------------------------\n");
-//
-//		getItemsByCategory("millets");
-//
-//		System.out.println("\n-----------UPDATE CATEGORY NAME OF ALL GROCERY ITEMS----------------\n");
-//
-//		updateCategoryName("snacks");
-//
-//		System.out.println("\n-----------UPDATE QUANTITY OF A GROCERY ITEM------------------------\n");
-//
-//		updateItemQuantity("Bonny Cheese Crackers Plain", 10);
-//
-//		System.out.println("\n----------DELETE A GROCERY ITEM----------------------------------\n");
-//
-//		deleteGroceryItem("Kodo Millet");
-//
-//		System.out.println("\n------------FINAL COUNT OF GROCERY ITEMS-------------------------\n");
-//
-//		findCountOfGroceryItems();
-//
-//		System.out.println("\n-------------------THANK YOU---------------------------");
-//
-
-
-
-	// CRUD operations
-
-	//CREATE
-//	void createGroceryItems() {
-//		System.out.println("Data creation started...");
-//
-//		groceryItemRepo.save(new GroceryItem("Whole Wheat Biscuit", "Whole Wheat Biscuit", 5, "snacks"));
-//		groceryItemRepo.save(new GroceryItem("Kodo Millet", "XYZ Kodo Millet healthy", 2, "millets"));
-//		groceryItemRepo.save(new GroceryItem("Dried Red Chilli", "Dried Whole Red Chilli", 2, "spices"));
-//		groceryItemRepo.save(new GroceryItem("Pearl Millet", "Healthy Pearl Millet", 1, "millets"));
-//		groceryItemRepo.save(new GroceryItem("Cheese Crackers", "Bonny Cheese Crackers Plain", 6, "snacks"));
-//
-//		System.out.println("Data creation complete...");
-//	}
-
-	// READ
-	// 1. Show all the data
-//	 public void showAllGroceryItems() {
-//
-//		 itemList = groceryItemRepo.findAll();
-//
-//		 itemList.forEach(item -> System.out.println(getItemDetails(item)));
-//	 }
-//
-//	 // 2. Get item by name
-//	 public void getGroceryItemByName(String name) {
-//		 System.out.println("Getting item by name: " + name);
-//		 GroceryItem item = groceryItemRepo.findItemByName(name);
-//		 System.out.println(getItemDetails(item));
-//	 }
-//
-//	 // 3. Get name and items of a all items of a particular category
-//	 public void getItemsByCategory(String category) {
-//		 System.out.println("Getting items for the category " + category);
-//		 List<GroceryItem> list = groceryItemRepo.findAll(category);
-//
-//		 list.forEach(item -> System.out.println("Name: " + item.getName() + ", Quantity: " + item.getItemQuantity()));
-//	 }
-//
-//	 // 4. Get count of documents in the collection
-//	 public void findCountOfGroceryItems() {
-//		 long count = groceryItemRepo.count();
-//		 System.out.println("Number of documents in the collection = " + count);
-//	 }
-//
-//	 // UPDATE APPROACH 1: Using MongoRepository
-//	 public void updateCategoryName(String category) {
-//
-//		 // Change to this new value
-//		 String newCategory = "munchies";
-//
-//		 // Find all the items with the category
-//		 List<GroceryItem> list = groceryItemRepo.findAll(category);
-//
-//		 list.forEach(item -> {
-//			 // Update the category in each document
-//			 item.setCategory(newCategory);
-//		 });
-//
-//		 // Save all the items in database
-//		 List<GroceryItem> itemsUpdated = groceryItemRepo.saveAll(list);
-//
-//		 if(itemsUpdated != null)
-//			 System.out.println("Successfully updated " + itemsUpdated.size() + " items.");
-//	 }
-//
-//
-//	 // UPDATE APPROACH 2: Using MongoTemplate
-//	 public void updateItemQuantity(String name, float newQuantity) {
-//		 System.out.println("Updating quantity for " + name);
-//		 customRepo.updateItemQuantity(name, newQuantity);
-//	 }
-//
-//	 // DELETE
-//	 public void deleteGroceryItem(String id) {
-//		 groceryItemRepo.deleteById(id);
-//		 System.out.println("Item with id " + id + " deleted...");
-//	 }
-//	 // Print details in readable form
-//
-//	 public String getItemDetails(GroceryItem item) {
-//
-//		 System.out.println(
-//		 "Item Name: " + item.getName() +
-//		 ", \nItem Quantity: " + item.getItemQuantity() +
-//		 ", \nItem Category: " + item.getCategory()
-//		 );
-//
-//		 return "";
-//	 }
 }
 
