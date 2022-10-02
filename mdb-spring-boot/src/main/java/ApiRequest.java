@@ -23,7 +23,7 @@ public class ApiRequest
         String result ="1";
        try{
            HttpClient httpClient    = HttpClientBuilder.create().build();
-           HttpPost postreq = new HttpPost("http://fhir.dataqhealth.com/fhir/"+ResourceType);
+           HttpPost postreq = new HttpPost("http://fhir.domainname.com/fhir/"+ResourceType);
            StringEntity postingString = new StringEntity(serOrg, ContentType.APPLICATION_JSON);
            postreq.setEntity(postingString);
            HttpResponse response = httpClient.execute(postreq);
