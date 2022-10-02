@@ -22,7 +22,7 @@ class FhirApiReqTest {
         int total=0;
         try{
             HttpClient httpClient    = HttpClientBuilder.create().build();
-            HttpGet getreq = new HttpGet("http://fhir.dataqhealth.com/fhir/Practitioner?identifier=1437117322");
+            HttpGet getreq = new HttpGet("http://fhir.domainname.com/fhir/Practitioner?identifier=##########");
             // StringEntity postingString = new StringEntity(serOrg, ContentType.APPLICATION_JSON);
             // getreq.setEntity(postingString);
             HttpResponse response = httpClient.execute(getreq);
